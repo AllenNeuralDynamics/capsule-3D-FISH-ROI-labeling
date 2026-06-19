@@ -1,2 +1,12 @@
 metadata_version: 1
-name: ophys-mFISH auto coreg dev - Claude Code v0.2 - add_unmixed_spot_dataset
+name: 3D HCR ROI-quality labeling
+description: "Interactive (Ubuntu cloud-workstation) capsule to human-label 3-D HCR cell
+  ROI quality (good / bad_ok / bad / merged). Reads the inference outputs + prior label
+  assets, and writes each labeling session as its own timestamped label asset (merged
+  newest-wins downstream by the training capsule)."
+tags:
+- 3D-HCR-ROI-labeling
+- mfish
+- coregistration
+authors:
+- name: Jinho Kim

@@ -1,6 +1,22 @@
 #!/usr/bin/env bash
-set -ex
-# Interactive labeling capsule (Ubuntu cloud workstation).
-# Launch the ROI-quality labeling GUI; see plan.md (Capsule 2).
-#   roi-classifier-label --label-assets <dir> --label-out /results --reviewer <you>
-echo "Launch roi-classifier-label in the cloud workstation."
+set -e
+# Interactive ROI-quality labeling. Launch in the CodeOcean Ubuntu CLOUD WORKSTATION
+# (the matplotlib GUI needs a display — not a headless Reproducible Run).
+#
+# Reads prior labels (merged newest-wins) and the inference outputs to display ROIs;
+# writes THIS session's labels to a NEW timestamped file under /results, which you
+# then publish as a per-session label data asset.
+#
+# Point these at the attached assets:
+export MFISH_DATA_ROOT="${MFISH_DATA_ROOT:-/root/capsule/data}"
+export MFISH_ROI_QUALITY_DIR="${MFISH_ROI_QUALITY_DIR:-/root/capsule/data/inference}"            # {sid}_features_all.parquet
+export MFISH_TIGHT_BBOX_DIR="${MFISH_TIGHT_BBOX_DIR:-/root/capsule/data/inference/hcr_cell_tight_bbox}"
+export MFISH_MODELS_DIR="${MFISH_MODELS_DIR:-/mfish-roi-classifier/models}"
+LABEL_ASSETS="${LABEL_ASSETS:-/root/capsule/data/labels}"   # dir of prior *.jsonl label assets (optional)
+REVIEWER="${REVIEWER:-anonymous}"
+
+ARGS=(--label-assets "$LABEL_ASSETS" --label-out /root/capsule/results --reviewer "$REVIEWER")
+[ -n "${SID:-}" ]        && ARGS+=(--sid "$SID")
+[ -n "${CANDIDATES:-}" ] && ARGS+=(--candidates "$CANDIDATES")
+echo "+ roi-classifier-label ${ARGS[*]}"
+exec roi-classifier-label "${ARGS[@]}"
