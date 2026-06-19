@@ -1,22 +1,11 @@
 #!/usr/bin/env bash
-set -e
-# Interactive ROI-quality labeling. Launch in the CodeOcean Ubuntu CLOUD WORKSTATION
-# (the matplotlib GUI needs a display — not a headless Reproducible Run).
-#
-# Reads prior labels (merged newest-wins) and the inference outputs to display ROIs;
-# writes THIS session's labels to a NEW timestamped file under /results, which you
-# then publish as a per-session label data asset.
-#
-# Point these at the attached assets:
-export MFISH_DATA_ROOT="${MFISH_DATA_ROOT:-/root/capsule/data}"
-export MFISH_ROI_QUALITY_DIR="${MFISH_ROI_QUALITY_DIR:-/root/capsule/data/inference}"            # {sid}_features_all.parquet
-export MFISH_TIGHT_BBOX_DIR="${MFISH_TIGHT_BBOX_DIR:-/root/capsule/data/inference/hcr_cell_tight_bbox}"
-export MFISH_MODELS_DIR="${MFISH_MODELS_DIR:-/mfish-roi-classifier/models}"
-LABEL_ASSETS="${LABEL_ASSETS:-/root/capsule/data/labels}"   # dir of prior *.jsonl label assets (optional)
-REVIEWER="${REVIEWER:-anonymous}"
-
-ARGS=(--label-assets "$LABEL_ASSETS" --label-out /root/capsule/results --reviewer "$REVIEWER")
-[ -n "${SID:-}" ]        && ARGS+=(--sid "$SID")
-[ -n "${CANDIDATES:-}" ] && ARGS+=(--candidates "$CANDIDATES")
-echo "+ roi-classifier-label ${ARGS[*]}"
-exec roi-classifier-label "${ARGS[@]}"
+# This is an INTERACTIVE capsule (label HCR ROI quality in the Ubuntu cloud
+# workstation). It is NOT a Reproducible Run — there is nothing to run headlessly.
+echo "============================================================"
+echo " 3D HCR ROI-quality LABELING — interactive capsule"
+echo " This capsule is NOT for Reproducible Run."
+echo " Open the Ubuntu cloud workstation and launch the labeling GUI there."
+echo " (Subject data-asset attach + GUI launcher + ROI filtering are TODO —"
+echo "  pending Capsule 1 outputs; see README.)"
+echo "============================================================"
+exit 0
