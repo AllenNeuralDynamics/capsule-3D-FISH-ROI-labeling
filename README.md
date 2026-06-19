@@ -2,7 +2,7 @@
 
 Interactive CodeOcean capsule (Ubuntu **cloud workstation**) to human-label HCR cell
 ROI quality. It runs the `roi-classifier-label` GUI from
-[`mfish-roi-classifier`](https://github.com/AllenNeuralDynamics/mfish-roi-classifier).
+[`mfish-roi-classifier`](https://github.com/jkim0731/mfish-roi-classifier).
 Scaffold mimics the dev capsule (`/root/capsule`) desktop environment (the GUI needs a display).
 
 ## How to run (cloud workstation)

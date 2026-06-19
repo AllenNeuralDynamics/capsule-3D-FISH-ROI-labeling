@@ -5,5 +5,5 @@ set -euxo pipefail
 # `roi-classifier-label` matplotlib GUI). The Ubuntu-desktop base image supplies
 # the X display the GUI needs.
 cd /
-git clone https://github.com/AllenNeuralDynamics/mfish-roi-classifier
+git clone https://github.com/jkim0731/mfish-roi-classifier
 cd /mfish-roi-classifier && pip install -e ".[label]"
