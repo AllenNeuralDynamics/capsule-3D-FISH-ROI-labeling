@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+set -ex
+# Interactive labeling capsule (Ubuntu cloud workstation).
+# Launch the ROI-quality labeling GUI; see plan.md (Capsule 2).
+#   roi-classifier-label --label-assets <dir> --label-out /results --reviewer <you>
+echo "Launch roi-classifier-label in the cloud workstation."
