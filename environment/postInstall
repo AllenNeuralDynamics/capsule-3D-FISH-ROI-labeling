@@ -2,10 +2,11 @@
 set -euxo pipefail
 
 # cache bust 260620-00
+cd / && git clone https://github.com/AllenNeuralDynamics/lamf-analysis
+cd /lamf-analysis && pip install -e .
 
 # Interactive labeling capsule: install the ROI-quality package (provides the
 # `roi-classifier-label` matplotlib GUI). The Ubuntu-desktop base image supplies
 # the X display the GUI needs.
-cd /
-git clone https://github.com/jkim0731/mfish-roi-classifier
+cd / && git clone https://github.com/jkim0731/mfish-roi-classifier
 cd /mfish-roi-classifier && pip install -e ".[label]"
